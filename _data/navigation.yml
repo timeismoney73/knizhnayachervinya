@@ -1,0 +1,8 @@
+- label: читать
+  url: /
+- label: все тексты
+  url: /archive/
+- label: книжный клуб
+  url: /meetings/
+- label: о блоге
+  url: /about/

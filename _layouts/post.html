@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<article class="article-page{% if page.category == 'meetings' %} article-page--meeting{% endif %}">
+  <header class="article-hero shell">
+    <a class="article-back" href="{% if page.category == 'meetings' %}{{ '/meetings/' | relative_url }}{% else %}{{ '/archive/' | relative_url }}{% endif %}">← назад</a>
+    <div class="article-meta">
+      <span>{% if page.category == 'meetings' %}встреча клуба{% elsif page.category == 'reviews' %}рецензия{% elsif page.category == 'lists' %}подборка{% else %}заметка{% endif %}</span>
+      <span>{{ page.date_label }}</span>
+      <span>{{ page.reading_time | default: '4 мин' }}</span>
+    </div>
+    <h1>{{ page.title }}</h1>
+    <p class="article-deck">{{ page.description }}</p>
+    {% if page.category == 'meetings' %}
+      <div class="article-event-date"><strong>{{ page.event_day }}</strong><span>{{ page.event_month }}<br>{{ page.event_time }}</span></div>
+    {% else %}
+      <div class="article-glyph" aria-hidden="true">{{ page.glyph | default: '↝' }}</div>
+    {% endif %}
+  </header>
+
+  {% if page.category == 'meetings' %}
+  <aside class="event-bar">
+    <div class="shell event-bar-inner">
+      <dl>
+        <div><dt>формат</dt><dd>{{ page.event_format }}</dd></div>
+        <div><dt>стоимость</dt><dd>{{ page.price }}</dd></div>
+        <div><dt>модератор</dt><dd>{{ page.moderator }}</dd></div>
+      </dl>
+      {% if page.status == 'upcoming' %}<a class="button button--light" href="{{ page.registration_url }}" target="_blank" rel="noopener">Записаться <span>↗</span></a>{% endif %}
+    </div>
+  </aside>
+  {% endif %}
+
+  <div class="article-layout shell">
+    <aside class="article-aside">
+      <span>оригинал</span>
+      <a href="{{ page.source_url }}" target="_blank" rel="noopener">пост в Telegram ↗</a>
+      {% if page.book_title %}<p>Книга<br><b>«{{ page.book_title }}»</b><br>{{ page.book_author }}</p>{% endif %}
+    </aside>
+    <div class="article-content">{{ content }}</div>
+  </div>
+
+  <footer class="article-footer shell">
+    <p>Дочитали? Это почти клубный подвиг.</p>
+    <a href="{{ site.telegram_url }}" target="_blank" rel="noopener">Обсудить в Telegram <span>↗</span></a>
+  </footer>
+</article>

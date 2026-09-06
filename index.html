@@ -1,0 +1,79 @@
+---
+title:
+description: Книжные обзоры, честные читательские заметки и встречи книжного клуба «Книжная червиня».
+permalink: /
+body_class: home
+---
+<section class="home-hero shell">
+  <div class="hero-copy">
+    <p class="kicker">авторский блог о книгах</p>
+    <h1>Читаю.<br>Думаю.<br><em>Спорю.</em></h1>
+    <div class="hero-lead">
+      <p>Без оценок по пятибалльной шкале. Зато с вопросами, сомнениями и искрами безумия.</p>
+      <a class="round-arrow" href="#latest" aria-label="К свежим публикациям">↓</a>
+    </div>
+  </div>
+  <figure class="hero-visual">
+    <img src="{{ '/assets/images/bookworm-hero.png' | relative_url }}" alt="Красный книжный червячок выглядывает из раскрытой книги">
+    <figcaption><span>осторожно:</span> книги забирают<br>последний дофамин</figcaption>
+    <div class="hero-sticker">жизнь<br>между<br>строк</div>
+  </figure>
+</section>
+
+<section class="crawl" aria-label="Темы блога">
+  <div>рецензии <i>✦</i> русская классика <i>✦</i> подборки <i>✦</i> книжный клуб <i>✦</i> писательские странности <i>✦</i> рецензии <i>✦</i> русская классика <i>✦</i> подборки <i>✦</i></div>
+</section>
+
+<section class="latest shell" id="latest">
+  <div class="section-head">
+    <p class="section-number">01 / свежие записи</p>
+    <h2>Что я успела<br><em>прочитать и осмыслить</em></h2>
+    <a class="under-link" href="{{ '/archive/' | relative_url }}">Весь архив <span>↗</span></a>
+  </div>
+  <div class="post-grid">
+    {% for post in site.posts limit:6 %}
+      <article class="post-card{% if post.category == 'meetings' %} post-card--meeting{% endif %}">
+        <a class="post-card-link" href="{{ post.url | relative_url }}">
+          <div class="post-card-top">
+            <span class="post-kind">{% if post.category == 'meetings' %}встреча клуба{% elsif post.category == 'reviews' %}рецензия{% elsif post.category == 'lists' %}подборка{% else %}заметка{% endif %}</span>
+            <span>{{ post.date_label }}</span>
+          </div>
+          {% if post.category == 'meetings' %}
+            <div class="meeting-date-mini"><b>{{ post.event_day }}</b><span>{{ post.event_month }}<br>{{ post.event_time }}</span></div>
+          {% else %}
+            <div class="card-glyph" aria-hidden="true">{{ post.glyph | default: '↝' }}</div>
+          {% endif %}
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.description }}</p>
+          <div class="post-card-bottom"><span>{{ post.reading_time | default: '4 мин' }}</span><b>читать ↗</b></div>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% assign next_meeting = site.categories.meetings | where: "status", "upcoming" | first %}
+{% if next_meeting %}
+<section class="club-feature">
+  <div class="club-feature-inner shell">
+    <div class="club-date"><strong>{{ next_meeting.event_day }}</strong><span>{{ next_meeting.event_month }}<br>{{ next_meeting.event_time }}</span></div>
+    <div class="club-copy">
+      <p class="kicker">ближайшая онлайн-встреча</p>
+      <h2>{{ next_meeting.book_title }}<br><em>{{ next_meeting.book_author }}</em></h2>
+      <p>{{ next_meeting.description }}</p>
+    </div>
+    <a class="club-action" href="{{ next_meeting.url | relative_url }}"><span>Подробнее<br>и запись</span><b>↗</b></a>
+  </div>
+</section>
+{% endif %}
+
+<section class="manifesto shell">
+  <p class="section-number">02 / манифест</p>
+  <div>
+    <p class="manifesto-big">Книга не обязана нравиться. Но почти всегда обязана <em>что-нибудь с нами сделать.</em></p>
+    <div class="manifesto-note">
+      <span>КЧ</span>
+      <p>Здесь не пересказывают сюжет. Здесь разбираются, почему после финальной точки всё ещё не отпускает.</p>
+    </div>
+  </div>
+</section>

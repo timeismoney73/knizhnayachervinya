@@ -1,0 +1,21 @@
+<header class="site-header shell">
+  <a class="brand" href="{{ '/' | relative_url }}" aria-label="Книжная червиня — на главную">
+    <span class="brand-worm" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="brand-name">книжная<br>червиня</span>
+  </a>
+  <nav class="main-nav" aria-label="Основная навигация">
+    {% for item in site.data.navigation %}
+      <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+    {% endfor %}
+  </nav>
+  <a class="telegram-link" href="{{ site.telegram_url }}" target="_blank" rel="noopener">telegram <span>↗</span></a>
+  <details class="mobile-menu">
+    <summary aria-label="Открыть меню"><span></span><span></span></summary>
+    <nav aria-label="Мобильная навигация">
+      {% for item in site.data.navigation %}
+        <a href="{{ item.url | relative_url }}"><small>0{{ forloop.index }}</small>{{ item.label }}</a>
+      {% endfor %}
+      <a href="{{ site.telegram_url }}" target="_blank" rel="noopener"><small>↗</small>telegram</a>
+    </nav>
+  </details>
+</header>

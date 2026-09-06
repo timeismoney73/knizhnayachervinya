@@ -1,0 +1,34 @@
+---
+title: Все тексты
+description: Архив рецензий, книжных подборок, заметок и встреч «Книжной червини».
+permalink: /archive/
+body_class: archive-page
+---
+<section class="page-hero shell page-hero--archive">
+  <p class="kicker">228 фото, 113 ссылок и много букв</p>
+  <h1>Все<br><em>тексты</em></h1>
+  <p class="page-lead">Рецензии, списки, писательские биографии и анонсы клуба — всё, что успело выползти из Telegram.</p>
+</section>
+
+<section class="archive-body shell">
+  <div class="archive-filters" aria-label="Фильтры публикаций">
+    <button class="active" type="button" data-filter="all">всё</button>
+    <button type="button" data-filter="reviews">рецензии</button>
+    <button type="button" data-filter="lists">подборки</button>
+    <button type="button" data-filter="essays">заметки</button>
+    <button type="button" data-filter="meetings">встречи</button>
+  </div>
+  <div class="archive-list">
+    {% for post in site.posts %}
+      <article class="archive-row" data-type="{{ post.category }}">
+        <a href="{{ post.url | relative_url }}">
+          <span class="archive-index">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+          <span class="archive-kind">{% if post.category == 'meetings' %}встреча{% elsif post.category == 'reviews' %}рецензия{% elsif post.category == 'lists' %}подборка{% else %}заметка{% endif %}</span>
+          <h2>{{ post.title }}</h2>
+          <span class="archive-date">{{ post.date_label }}</span>
+          <b>↗</b>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+</section>

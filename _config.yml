@@ -1,0 +1,41 @@
+title: Книжная червиня
+description: Авторский блог о книгах, писателях и чтении без школьной пыли.
+lang: ru
+url: ""
+baseurl: ""
+permalink: /read/:title/
+timezone: Asia/Yekaterinburg
+author: Яна
+telegram_url: https://t.me/knizhnayachervinya
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - node_modules
+  - app
+  - public
+  - package.json
+  - pnpm-lock.yaml
+  - pnpm-workspace.yaml
+  - next.config.ts
+  - vite.config.ts
+  - tsconfig.json
+  - eslint.config.mjs
+  - next-env.d.ts
+  - .openai
+  - .pnpm-store
+  - dist
+  - _tmp_*

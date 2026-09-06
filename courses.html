@@ -1,0 +1,69 @@
+---
+title: Книжный клуб
+description: Анонсы и архив онлайн-встреч книжного клуба «Книжная червиня».
+permalink: /meetings/
+body_class: meetings-page
+---
+<section class="page-hero shell page-hero--club">
+  <p class="kicker">читаем не в одиночку</p>
+  <h1>Книжный<br><em>клуб</em></h1>
+  <p class="page-lead">Выбираем одну книгу, читаем без спешки и встречаемся онлайн, чтобы сравнить свои версии прочитанного.</p>
+  <div class="orbit-note">онлайн<br>из любой<br>точки</div>
+</section>
+
+{% assign upcoming = site.categories.meetings | where: "status", "upcoming" %}
+<section class="upcoming shell">
+  <div class="section-head section-head--compact">
+    <p class="section-number">01 / ближайшая встреча</p>
+    <h2>Есть планы<br><em>на вечер?</em></h2>
+  </div>
+  {% for post in upcoming %}
+    <article class="upcoming-card">
+      <div class="upcoming-date"><strong>{{ post.event_day }}</strong><span>{{ post.event_month }} / {{ post.event_time }}<br>{{ post.event_format }}</span></div>
+      <div class="upcoming-info">
+        <p class="kicker">обсуждаем</p>
+        <h3>«{{ post.book_title }}»</h3>
+        <p class="book-author">{{ post.book_author }}</p>
+        <p>{{ post.description }}</p>
+        <dl>
+          <div><dt>формат</dt><dd>{{ post.event_format }}</dd></div>
+          <div><dt>стоимость</dt><dd>{{ post.price }}</dd></div>
+          <div><dt>модератор</dt><dd>{{ post.moderator }}</dd></div>
+        </dl>
+      </div>
+      <div class="upcoming-actions">
+        <a class="button button--dark" href="{{ post.registration_url }}" target="_blank" rel="noopener">Записаться <span>↗</span></a>
+        <a class="under-link" href="{{ post.url | relative_url }}">О встрече <span>→</span></a>
+      </div>
+    </article>
+  {% else %}
+    <p class="empty-state">Следующая книга уже выбирается. Анонс скоро появится здесь и в Telegram.</p>
+  {% endfor %}
+</section>
+
+<section class="past-meetings shell">
+  <div class="section-head section-head--compact">
+    <p class="section-number">02 / архив</p>
+    <h2>Что уже<br><em>обсудили</em></h2>
+  </div>
+  <div class="meeting-list">
+    {% assign past = site.categories.meetings | where: "status", "past" %}
+    {% for post in past %}
+      <a class="meeting-row" href="{{ post.url | relative_url }}">
+        <span class="meeting-row-date">{{ post.event_day }} {{ post.event_month }}</span>
+        <h3>«{{ post.book_title }}»</h3>
+        <p>{{ post.book_author }}</p>
+        <b>↗</b>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="club-rules shell">
+  <p class="section-number">03 / как это устроено</p>
+  <div class="rules-grid">
+    <article><span>1</span><h3>Регистрируетесь</h3><p>Заполняете короткую форму и получаете ссылку перед встречей.</p></article>
+    <article><span>2</span><h3>Читаете</h3><p>В своём ритме. Закладки, заметки и несогласие с автором приветствуются.</p></article>
+    <article><span>3</span><h3>Встречаемся</h3><p>Два часа разговора по существу — бережно, но без единственно верной трактовки.</p></article>
+  </div>
+</section>

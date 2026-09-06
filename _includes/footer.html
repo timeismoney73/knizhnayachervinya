@@ -1,0 +1,22 @@
+<footer class="site-footer">
+  <div class="footer-invite shell">
+    <p class="kicker">ещё больше — в канале</p>
+    <a href="{{ site.telegram_url }}" target="_blank" rel="noopener">Подписаться на<br><em>червиню</em> <span>↗</span></a>
+  </div>
+  <div class="footer-bottom shell">
+    <a class="brand footer-brand" href="{{ '/' | relative_url }}">
+      <span class="brand-worm" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="brand-name">книжная<br>червиня</span>
+    </a>
+    <p>Книги, люди<br>и всё между строк.</p>
+    <nav aria-label="Навигация в подвале">
+      <a href="{{ '/archive/' | relative_url }}">все тексты</a>
+      <a href="{{ '/meetings/' | relative_url }}">книжный клуб</a>
+      <a href="{{ '/about/' | relative_url }}">о блоге</a>
+    </nav>
+    <div class="footer-meta">
+      <a href="{{ site.telegram_url }}" target="_blank" rel="noopener">@knizhnayachervinya</a>
+      <span>© {{ 'now' | date: '%Y' }}</span>
+    </div>
+  </div>
+</footer>

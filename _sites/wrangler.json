@@ -1,0 +1,16 @@
+{
+  "name": "knizhnaya-chervinya",
+  "compatibility_date": "2026-09-06",
+  "main": "index.js",
+  "no_bundle": true,
+  "rules": [
+    { "type": "ESModule", "globs": ["**/*.js", "**/*.mjs"] }
+  ],
+  "assets": {
+    "directory": "../client",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}
