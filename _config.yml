@@ -1,8 +1,8 @@
 title: Книжная червиня
 description: Авторский блог о книгах, писателях и чтении без школьной пыли.
 lang: ru
-url: ""
-baseurl: ""
+url: "https://timeismoney73.github.io"
+baseurl: "/knizhnayachervinya"
 permalink: /read/:title/
 timezone: Asia/Yekaterinburg
 author: Яна
